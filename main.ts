@@ -1,4 +1,10 @@
 input.buttonA.onEvent(ButtonEvent.Click, function () {
+    network.infraredSendNumber("Hello".length)
+    light.showRing(
+    "red red red red red red red red red red"
+    )
+})
+input.onGesture(Gesture.Shake, function () {
 	
 })
 forever(function () {
