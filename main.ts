@@ -1,3 +1,6 @@
+input.buttonA.onEvent(ButtonEvent.Click, function () {
+	
+})
 forever(function () {
     light.showRing(
     "red red red red red red red red red red"
