@@ -66,6 +66,19 @@ function Sans_Intermediate () {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
+// Jetpack
+input.buttonB.onEvent(ButtonEvent.Up, function () {
+    makerController.player1.press(ArcadeButton.B)
+    control.runInParallel(function () {
+        light.setPixelColor(5, 0xff0080)
+        light.setPixelColor(6, 0xff0080)
+        light.setPixelColor(7, 0xff0080)
+        light.setPixelColor(8, 0xff0080)
+        light.setPixelColor(9, 0xff0080)
+        control.waitMicros(1000)
+        light.clear()
+    })
+})
 input.onGesture(Gesture.FaceDown, function () {
     makerController.player1.press(ArcadeButton.Down)
     control.runInParallel(function () {
