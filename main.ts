@@ -1,20 +1,17 @@
 // gravity
 input.buttonsAB.onEvent(ButtonEvent.Click, function () {
-    light.showRing(
-    `blue blue blue blue blue blue blue blue blue blue`
-    )
     makerController.player1.press(ArcadeButton.AB)
+    light.showRing(
+    `blue red blue red blue blue red blue red blue`
+    )
 })
 input.onLoudSound(function () {
-    light.showAnimation(light.rainbowAnimation, 500)
-    makerController.player1.press(ArcadeButton.B)
-})
-// Jetpack
-input.buttonB.onEvent(ButtonEvent.Down, function () {
-    light.showRing(
-    `black black black black black blue blue blue blue blue`
-    )
-    makerController.player1.setButton(ArcadeButton.A, true)
+    if (ScreamFlag) {
+        makerController.player1.press(ArcadeButton.B)
+        control.runInParallel(function () {
+            light.showAnimation(light.rainbowAnimation, 500)
+        })
+    }
 })
 function Sans_Intermediate () {
     music.ringTone(117)
@@ -42,16 +39,16 @@ function Sans_Intermediate () {
     music.stopAllSounds()
 }
 input.buttonA.onEvent(ButtonEvent.Click, function () {
+    makerController.player1.press(ArcadeButton.A)
     light.showRing(
     `red red red red red black black black black black`
     )
-    makerController.player1.press(ArcadeButton.A)
 })
-input.buttonB.onEvent(ButtonEvent.Up, function () {
+input.onGesture(Gesture.Shake, function () {
     light.showRing(
-    `black black black black black green green green green green`
+    `purple purple purple purple purple purple purple purple purple purple`
     )
-    makerController.player1.setButton(ArcadeButton.A, false)
+    ScreamFlag = 1
 })
 function Sans_Simple (FirstNote: number, LowNote: number) {
     music.ringTone(LowNote)
@@ -76,17 +73,12 @@ function Sans_Simple (FirstNote: number, LowNote: number) {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
-music.setTempo(150)
-music.setVolume(120)
-control.runInParallel(function () {
-    while (true) {
-        Sans_Simple(587, 0)
-        Sans_Simple(523, 0)
-        Sans_Simple(494, 0)
-        Sans_Simple(466, 0)
-        Sans_Simple(587, 147)
-        Sans_Simple(523, 131)
-        Sans_Simple(494, 123)
-        Sans_Intermediate()
-    }
+// Jetpack
+input.buttonB.onEvent(ButtonEvent.Click, function () {
+    makerController.player1.press(ArcadeButton.B)
+    light.showRing(
+    `black black black black black blue blue blue blue blue`
+    )
 })
+let ScreamFlag = 0
+ScreamFlag = 0
