@@ -1,12 +1,19 @@
 // gravity
 input.buttonsAB.onEvent(ButtonEvent.Click, function () {
+    light.showRing(
+    `blue blue blue blue blue blue blue blue blue blue`
+    )
     makerController.player1.press(ArcadeButton.AB)
 })
 input.onLoudSound(function () {
+    light.showAnimation(light.rainbowAnimation, 500)
     makerController.player1.press(ArcadeButton.B)
 })
 // Jetpack
 input.buttonB.onEvent(ButtonEvent.Down, function () {
+    light.showRing(
+    `black black black black black blue blue blue blue blue`
+    )
     makerController.player1.setButton(ArcadeButton.A, true)
 })
 function Sans_Intermediate () {
@@ -35,9 +42,15 @@ function Sans_Intermediate () {
     music.stopAllSounds()
 }
 input.buttonA.onEvent(ButtonEvent.Click, function () {
+    light.showRing(
+    `red red red red red black black black black black`
+    )
     makerController.player1.press(ArcadeButton.A)
 })
 input.buttonB.onEvent(ButtonEvent.Up, function () {
+    light.showRing(
+    `black black black black black green green green green green`
+    )
     makerController.player1.setButton(ArcadeButton.A, false)
 })
 function Sans_Simple (FirstNote: number, LowNote: number) {
