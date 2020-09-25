@@ -1,11 +1,11 @@
 input.buttonA.onEvent(ButtonEvent.Down, function () {
     makerController.player1.press(ArcadeButton.A)
     control.runInParallel(function () {
-        light.setPixelColor(0, 0x0000ff)
-        light.setPixelColor(1, 0x0000ff)
-        light.setPixelColor(2, 0x0000ff)
-        light.setPixelColor(3, 0x0000ff)
-        light.setPixelColor(4, 0x0000ff)
+        light.setPixelColor(0, 0x00ffff)
+        light.setPixelColor(1, 0x00ffff)
+        light.setPixelColor(2, 0x00ffff)
+        light.setPixelColor(3, 0x00ffff)
+        light.setPixelColor(4, 0x00ffff)
         control.waitMicros(100)
         light.clear()
     })
@@ -32,11 +32,11 @@ input.buttonsAB.onEvent(ButtonEvent.Down, function () {
 input.buttonB.onEvent(ButtonEvent.Down, function () {
     makerController.player1.press(ArcadeButton.B)
     control.runInParallel(function () {
-        light.setPixelColor(5, 0xff0000)
-        light.setPixelColor(6, 0xff0000)
-        light.setPixelColor(7, 0xff0000)
-        light.setPixelColor(8, 0xff0000)
-        light.setPixelColor(9, 0xff0000)
+        light.setPixelColor(5, 0xff0080)
+        light.setPixelColor(6, 0xff0080)
+        light.setPixelColor(7, 0xff0080)
+        light.setPixelColor(8, 0xff0080)
+        light.setPixelColor(9, 0xff0080)
         control.waitMicros(1000)
         light.clear()
     })
@@ -66,6 +66,21 @@ function Sans_Intermediate () {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
+input.onGesture(Gesture.FaceDown, function () {
+    makerController.player1.press(ArcadeButton.Down)
+    control.runInParallel(function () {
+        light.setPixelColor(0, 0xffff00)
+        light.setPixelColor(1, 0xffff00)
+        light.setPixelColor(2, 0xffff00)
+        light.setPixelColor(3, 0xffff00)
+        light.setPixelColor(4, 0xffff00)
+        light.setPixelColor(5, 0xffff00)
+        light.setPixelColor(6, 0xffff00)
+        light.setPixelColor(7, 0xffff00)
+        light.setPixelColor(8, 0xffff00)
+        light.setPixelColor(9, 0xffff00)
+    })
+})
 function Sans_Simple (FirstNote: number, LowNote: number) {
     music.ringTone(LowNote)
     music.playTone(FirstNote, music.beat(BeatFraction.Quarter))
@@ -89,6 +104,21 @@ function Sans_Simple (FirstNote: number, LowNote: number) {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
+input.onGesture(Gesture.FaceUp, function () {
+    makerController.player1.press(ArcadeButton.Up)
+    control.runInParallel(function () {
+        light.setPixelColor(0, 0x0000ff)
+        light.setPixelColor(1, 0x0000ff)
+        light.setPixelColor(2, 0x0000ff)
+        light.setPixelColor(3, 0x0000ff)
+        light.setPixelColor(4, 0x0000ff)
+        light.setPixelColor(5, 0x0000ff)
+        light.setPixelColor(6, 0x0000ff)
+        light.setPixelColor(7, 0x0000ff)
+        light.setPixelColor(8, 0x0000ff)
+        light.setPixelColor(9, 0x0000ff)
+    })
+})
 music.setTempo(150)
 music.setVolume(255)
 control.runInParallel(function () {
