@@ -37,8 +37,6 @@ input.buttonB.onEvent(ButtonEvent.Down, function () {
         light.setPixelColor(7, 0xff0080)
         light.setPixelColor(8, 0xff0080)
         light.setPixelColor(9, 0xff0080)
-        control.waitMicros(1000)
-        light.clear()
     })
 })
 function Sans_Intermediate () {
