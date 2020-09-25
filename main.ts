@@ -6,8 +6,6 @@ input.buttonA.onEvent(ButtonEvent.Down, function () {
         light.setPixelColor(2, 0x00ffff)
         light.setPixelColor(3, 0x00ffff)
         light.setPixelColor(4, 0x00ffff)
-        control.waitMicros(100)
-        light.clear()
     })
 })
 // gravity
@@ -24,8 +22,6 @@ input.buttonsAB.onEvent(ButtonEvent.Down, function () {
         light.setPixelColor(7, 0xff0080)
         light.setPixelColor(8, 0x00ffff)
         light.setPixelColor(9, 0xff0080)
-        control.waitMicros(1000)
-        light.clear()
     })
 })
 // Jetpack
@@ -37,6 +33,11 @@ input.buttonB.onEvent(ButtonEvent.Down, function () {
         light.setPixelColor(7, 0xff0080)
         light.setPixelColor(8, 0xff0080)
         light.setPixelColor(9, 0xff0080)
+    })
+})
+input.buttonA.onEvent(ButtonEvent.Up, function () {
+    control.runInParallel(function () {
+        light.clear()
     })
 })
 function Sans_Intermediate () {
@@ -68,12 +69,6 @@ function Sans_Intermediate () {
 input.buttonB.onEvent(ButtonEvent.Up, function () {
     makerController.player1.setButton(ArcadeButton.B, false)
     control.runInParallel(function () {
-        light.setPixelColor(5, 0xff0080)
-        light.setPixelColor(6, 0xff0080)
-        light.setPixelColor(7, 0xff0080)
-        light.setPixelColor(8, 0xff0080)
-        light.setPixelColor(9, 0xff0080)
-        control.waitMicros(1000)
         light.clear()
     })
 })
@@ -128,6 +123,12 @@ input.onGesture(Gesture.FaceUp, function () {
         light.setPixelColor(7, 0x0000ff)
         light.setPixelColor(8, 0x0000ff)
         light.setPixelColor(9, 0x0000ff)
+    })
+})
+// gravity
+input.buttonsAB.onEvent(ButtonEvent.Up, function () {
+    control.runInParallel(function () {
+        light.clear()
     })
 })
 music.setTempo(150)
