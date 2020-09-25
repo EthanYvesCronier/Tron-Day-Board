@@ -1,29 +1,45 @@
-// gravity
-input.buttonsAB.onEvent(ButtonEvent.Click, function () {
-    makerController.player1.press(ArcadeButton.AB)
+input.buttonA.onEvent(ButtonEvent.Down, function () {
+    makerController.player1.press(ArcadeButton.A)
     control.runInParallel(function () {
         light.setPixelColor(0, 0x0000ff)
-        light.setPixelColor(1, 0xff0000)
+        light.setPixelColor(1, 0x0000ff)
         light.setPixelColor(2, 0x0000ff)
-        light.setPixelColor(3, 0xff0000)
+        light.setPixelColor(3, 0x0000ff)
         light.setPixelColor(4, 0x0000ff)
-        light.setPixelColor(5, 0xff0000)
-        light.setPixelColor(6, 0x0000ff)
-        light.setPixelColor(7, 0xff0000)
-        light.setPixelColor(8, 0x0000ff)
-        light.setPixelColor(9, 0xff0000)
-        control.waitMicros(1)
+        control.waitMicros(100)
         light.clear()
     })
 })
-input.onLoudSound(function () {
-    if (ScreamFlag) {
-        makerController.player1.press(ArcadeButton.B)
-        control.runInParallel(function () {
-            light.showAnimation(light.rainbowAnimation, 500)
-            light.clear()
-        })
-    }
+// gravity
+input.buttonsAB.onEvent(ButtonEvent.Down, function () {
+    makerController.player1.press(ArcadeButton.AB)
+    control.runInParallel(function () {
+        light.setPixelColor(0, 0x00ffff)
+        light.setPixelColor(1, 0xff0080)
+        light.setPixelColor(2, 0x00ffff)
+        light.setPixelColor(3, 0xff0080)
+        light.setPixelColor(4, 0x00ffff)
+        light.setPixelColor(5, 0xff0080)
+        light.setPixelColor(6, 0x00ffff)
+        light.setPixelColor(7, 0xff0080)
+        light.setPixelColor(8, 0x00ffff)
+        light.setPixelColor(9, 0xff0080)
+        control.waitMicros(1000)
+        light.clear()
+    })
+})
+// Jetpack
+input.buttonB.onEvent(ButtonEvent.Down, function () {
+    makerController.player1.press(ArcadeButton.B)
+    control.runInParallel(function () {
+        light.setPixelColor(5, 0xff0000)
+        light.setPixelColor(6, 0xff0000)
+        light.setPixelColor(7, 0xff0000)
+        light.setPixelColor(8, 0xff0000)
+        light.setPixelColor(9, 0xff0000)
+        control.waitMicros(1000)
+        light.clear()
+    })
 })
 function Sans_Intermediate () {
     music.ringTone(117)
@@ -50,27 +66,6 @@ function Sans_Intermediate () {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
-input.buttonA.onEvent(ButtonEvent.Click, function () {
-    makerController.player1.press(ArcadeButton.A)
-    control.runInParallel(function () {
-        light.setPixelColor(0, 0x0000ff)
-        light.setPixelColor(1, 0x0000ff)
-        light.setPixelColor(2, 0x0000ff)
-        light.setPixelColor(3, 0x0000ff)
-        light.setPixelColor(4, 0x0000ff)
-        control.waitMicros(1)
-        light.clear()
-    })
-})
-input.onGesture(Gesture.Shake, function () {
-    ScreamFlag = 1
-    control.runInParallel(function () {
-        light.showRing(
-        `purple purple purple purple purple purple purple purple purple purple`
-        )
-        light.clear()
-    })
-})
 function Sans_Simple (FirstNote: number, LowNote: number) {
     music.ringTone(LowNote)
     music.playTone(FirstNote, music.beat(BeatFraction.Quarter))
@@ -94,18 +89,17 @@ function Sans_Simple (FirstNote: number, LowNote: number) {
     music.playTone(784, music.beat(BeatFraction.Quarter))
     music.stopAllSounds()
 }
-// Jetpack
-input.buttonB.onEvent(ButtonEvent.Click, function () {
-    makerController.player1.press(ArcadeButton.B)
-    control.runInParallel(function () {
-        light.setPixelColor(5, 0xff0000)
-        light.setPixelColor(6, 0xff0000)
-        light.setPixelColor(7, 0xff0000)
-        light.setPixelColor(8, 0xff0000)
-        light.setPixelColor(9, 0xff0000)
-        control.waitMicros(1)
-        light.clear()
-    })
+music.setTempo(150)
+music.setVolume(255)
+control.runInParallel(function () {
+    while (true) {
+        Sans_Simple(587, 0)
+        Sans_Simple(523, 0)
+        Sans_Simple(494, 0)
+        Sans_Simple(466, 0)
+        Sans_Simple(587, 147)
+        Sans_Simple(523, 131)
+        Sans_Simple(494, 123)
+        Sans_Intermediate()
+    }
 })
-let ScreamFlag = 0
-ScreamFlag = 0
