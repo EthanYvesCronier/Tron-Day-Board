@@ -30,7 +30,7 @@ input.buttonsAB.onEvent(ButtonEvent.Down, function () {
 })
 // Jetpack
 input.buttonB.onEvent(ButtonEvent.Down, function () {
-    makerController.player1.press(ArcadeButton.B)
+    makerController.player1.setButton(ArcadeButton.B, true)
     control.runInParallel(function () {
         light.setPixelColor(5, 0xff0080)
         light.setPixelColor(6, 0xff0080)
@@ -68,7 +68,7 @@ function Sans_Intermediate () {
 }
 // Jetpack
 input.buttonB.onEvent(ButtonEvent.Up, function () {
-    makerController.player1.press(ArcadeButton.B)
+    makerController.player1.setButton(ArcadeButton.B, false)
     control.runInParallel(function () {
         light.setPixelColor(5, 0xff0080)
         light.setPixelColor(6, 0xff0080)
