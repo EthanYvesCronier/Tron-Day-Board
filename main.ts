@@ -40,9 +40,11 @@ function Sans_Intermediate () {
 }
 input.buttonA.onEvent(ButtonEvent.Click, function () {
     makerController.player1.press(ArcadeButton.A)
-    light.showRing(
-    `red red red red red black black black black black`
-    )
+    control.runInParallel(function () {
+        light.showRing(
+        `green green green green green black black black black black`
+        )
+    })
 })
 input.onGesture(Gesture.Shake, function () {
     light.showRing(
